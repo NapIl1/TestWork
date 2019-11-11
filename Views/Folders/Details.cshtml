@@ -1,0 +1,26 @@
+﻿@model ICollection<AprioritDenysKarpenko.Folder>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Folder</h4>
+    <hr />
+    @foreach (var folder in Model)
+    {
+       
+        <span>Folder: @folder.FolerName</span>
+
+            foreach (var child in folder.Childs)
+            {
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.ActionLink(child.FolerName, "Details", new { path = ViewBag.route + "/" + child.FolerName })
+                    </dt>
+                </dl>
+            }
+    }
+</div>
